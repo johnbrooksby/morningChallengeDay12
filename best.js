@@ -1,20 +1,35 @@
-let minNum = 1000000000000000;
-let maxNum = 0;
-let stockArr = [30, 2, 1, 21, 5];
+let profit = 0;
+let stockArr = [7, 9, 5, 6, 3, 2];
 
 function best(Arr){
     for(let i = 0; i < Arr.length; i++){
-        for(let j = 1; j < Arr.length; j++){
-            if (Arr[i] < Arr[j] && Arr[i] < minNum){
-                minNum = Arr[i];
+        for(let j = i + 1; j < Arr.length; j++){
+            if (Arr[i] < Arr[j] && Arr[j] - Arr[i] > profit){
+                profit = Arr[j] - Arr[i];
             }
-            if (Arr[j] > Arr[i] && Arr[j] > maxNum){
-                maxNum = Arr[j];
-            }
+
+
         }
     }
-    console.log(`The best possible profit for the day was $${maxNum - minNum} per share.`);
+    console.log(`The best possible profit for the day was $${profit} per share.`);
     
 }
 
 best(stockArr)
+
+// function best(Arr){
+//     for (let i = 0; i < Arr.length; i++){
+//         let currentBuyNumber = Arr[i];
+//         for (let k = i + 1; k < Arr.length; k++){
+//             let currentSelNumber = Arr[k];
+//             let currentProfit = currentSelNumber - currentBuyNumber;
+//             if (currentProfit > profit){
+//                 profit = currentProfit;
+//             }
+//         }
+//     }
+//     return profit
+// }
+
+// best(stockArr)
+// console.log(`The best possible profit for the day was $${profit} per share.`);
